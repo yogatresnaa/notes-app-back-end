@@ -29,10 +29,7 @@ class NotesHandler {
     try{
         this._validator.validateNotePayload(request.payload);
         const { title = 'untitled', body, tags } = request.payload;
-        // Sebenarnya destructuring disini tidak diperlukan
         const noteId = await this._service.addNote({ title, body, tags });
-        // Kamu bisa langsung memasukkan payload di sini
-        // const noteId = await this._service.addAlbum(request.payload);
 
         const response = h.response({
            status: 'success',
